@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/davepoud/slugpool/issues"
   },
-  "homepage": "https://github.com/davepoud/slugpool#readme"
+  "homepage": "https://github.com/davepoud/slugpool#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
 }

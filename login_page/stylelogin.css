@@ -1,0 +1,145 @@
+* {  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: #003C6C; 
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #FFD700; 
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.btn-nav {
+    background: #FFD700;
+    color: #003C6C !important;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+/* LOGIN LAYOUT */
+.login-container {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 10%;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.login-card h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #003C6C;
+}
+
+/* INPUTS */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #003C6C;
+}
+
+/* BUTTON */
+.login-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* LINKS */
+.login-links {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.login-links a {
+    color: #003C6C;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+.forgot-password {
+    margin-bottom: 10px;
+}
+
+/* BUTTON STYLE (reused) */
+.btn-primary {
+    background: #FFD700;
+    color: #003C6C;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #222;
+    color: white;
+    font-size: 0.9rem;
+}
