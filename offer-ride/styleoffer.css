@@ -1,4 +1,4 @@
-/* General Setup */
+/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
     color: #333;
 }
 
-/* Navigation - Consistent with Landing Page */
+/* Navigation Bar */
 nav {
     display: flex;
     justify-content: space-between;
@@ -22,10 +22,10 @@ nav {
 }
 
 .logo a {
-    font-size: 1.5rem;
-    font-weight: bold;
     color: white;
     text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .logo span {
@@ -45,7 +45,6 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-weight: 500;
 }
 
 .btn-nav {
@@ -56,53 +55,69 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Layout Container */
+/* Form Container Layout */
 .container {
     padding: 40px 10%;
-    max-width: 800px;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    min-height: 80vh;
 }
 
-.page-header {
+.form-section {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    border-top: 8px solid #FFD700; /* Accent bar at the top */
+}
+
+h1 {
+    color: #003C6C;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
-/* Ride List & Cards */
-.ride-list {
+/* Input Styling */
+.input-group {
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
-.ride-card {
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    border-left: 6px solid #FFD700; /* Gold Slug Accent */
-}
-
-.ride-details h3 {
-    color: #003C6C;
+label {
+    font-weight: bold;
     margin-bottom: 5px;
+    color: #003C6C;
 }
 
-/* Buttons */
-.btn-request {
+input {
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #FFD700; /* Gold focus ring */
+}
+
+/* Submit Button */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
     background: #003C6C;
     color: white;
     border: none;
-    padding: 10px 20px;
     border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 10px;
     transition: background 0.2s ease;
 }
 
-.btn-request:hover {
+.btn-submit:hover {
     background-color: #002d52;
 }

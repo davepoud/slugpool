@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find a Ride | SlugPool</title>
     <link rel="stylesheet" href="stylefind.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <header>
         <nav>
-            <div class="logo">
-                <a href="../landing/main.html">Slug<span>Pool</span></a>
-            </div>
+            <div class="logo"><a href="../landing/main.html">Slug<span>Pool</span></a></div>
             <ul>
-                <li><a href="find-ride.html">Find a Ride</a></li>
-                <li><a href="../landing/main.html" class="btn-nav">Back Home</a></li>
+                <li><a href="../offer-ride/offer-ride.html">Offer a Ride</a></li>
+                <li><a href="../landing/main.html" class="btn-nav">Home</a></li>
             </ul>
         </nav>
     </header>
@@ -22,34 +21,43 @@
     <main class="container">
         <section class="page-header">
             <h1>Available Rides</h1>
-            <p>Don't be a lonely slug. Catch a ride with a classmate.</p>
         </section>
 
-        <section class="ride-list">
-            <div class="ride-card">
-                <div class="ride-details">
-                    <h3>UCSC Science Hill &rarr; San Jose</h3>
-                    <p><strong>Driver:</strong> Sammy Slug</p>
-                    <p><strong>Departure:</strong> Friday @ 4:00 PM</p>
-                    <p><strong>Seats Left:</strong> 2</p>
-                </div>
-                <button class="btn-request">Request Seat</button>
+        <div id="ride-list" class="ride-list">
             </div>
-
-            <div class="ride-card">
-                <div class="ride-details">
-                    <h3>Porter College &rarr; San Francisco</h3>
-                    <p><strong>Driver:</strong> Fiona Fin</p>
-                    <p><strong>Departure:</strong> Saturday @ 10:00 AM</p>
-                    <p><strong>Seats Left:</strong> 3</p>
-                </div>
-                <button class="btn-request">Request Seat</button>
-            </div>
-        </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 SlugPool. Made for Slugs, by Slugs.</p>
-    </footer>
+    <script>
+        const supabaseUrl = 'https://quygixzwxefbsmujzdqi.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF1eWdpeHp3eGVmYnNtdWp6ZHFpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE0NTM5NTIsImV4cCI6MjA4NzAyOTk1Mn0.AVMoANdjltDeWFgOH7dN-55qgU3kAeva3qRBiDsBF64';
+        const _supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+        async function fetchRides() {
+            const container = document.getElementById('ride-list');
+            const { data: rides, error } = await _supabase.from('rides').select('*').order('departure', { ascending: true });
+
+            if (error) {
+                container.innerHTML = `<p>Error: ${error.message}</p>`;
+                return;
+            }
+
+            container.innerHTML = rides.length ? '' : '<p>No rides found.</p>';
+
+            rides.forEach(ride => {
+                const date = new Date(ride.departure).toLocaleString([], {month: 'short', day: 'numeric', hour: '2-digit', minute:'2-digit'});
+                container.innerHTML += `
+                    <div class="ride-card">
+                        <div class="ride-details">
+                            <h3>${ride.pickup} &rarr; ${ride.destination}</h3>
+                            <p><strong>Driver:</strong> ${ride.name}</p>
+                            <p><strong>Leaving:</strong> ${date}</p>
+                            <p><strong>Seats:</strong> ${ride.seats}</p>
+                        </div>
+                        <button class="btn-request" onclick="alert('Contacting driver...')">Request</button>
+                    </div>`;
+            });
+        }
+        fetchRides();
+    </script>
 </body>
 </html>
